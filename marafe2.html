@@ -1,222 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checklist حصر المرافق (مع الحفظ)</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 20px;
-            background-color: #f4f7f6;
-            color: #333;
-        }
-        h1 {
-            color: #0056b3;
-            text-align: center;
-        }
-        .checklist-container {
-            max-width: 800px;
-            margin: auto;
-            background: #fff;
-            padding: 20px 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: #0056b3;
-            border-bottom: 2px solid #0056b3;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        .item {
-            display: block;
-            margin-bottom: 12px;
-            font-size: 1.1em;
-        }
-        label {
-            margin-right: 10px;
-            cursor: pointer;
-        }
-        input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            vertical-align: middle;
-            cursor: pointer;
-        }
-        .details {
-            font-size: 0.9em;
-            color: #555;
-            margin-right: 30px;
-            display: block;
-        }
-        .progress-section {
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            margin-bottom: 25px;
-        }
-        .progress-container {
-            display: flex;
-            align-items: center;
-            width: 100%;
-        }
-        .progress-bar {
-            flex-grow: 1;
-            background-color: #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 0 15px;
-        }
-        .progress-fill {
-            background-color: #28a745;
-            height: 22px;
-            width: 0%; /* يتم تحديثه بواسطة جافاسكريبت */
-            border-radius: 10px;
-            transition: width 0.4s ease-in-out;
-            text-align: center;
-            color: white;
-            font-weight: bold;
-        }
-         #progress-text {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #0056b3;
-         }
-    </style>
-</head>
-<body>
-
-    <div class="checklist-container">
-        <h1>قائمة مراجعة (Checklist) للمرافق الناقصة</h1>
-
-        <div class="progress-section">
-            <div class="progress-container">
-                <label for="progress-bar" style="font-weight:bold;">نسبة الإنجاز:</label>
-                <div class="progress-bar" id="progress-bar">
-                    <div id="progress-indicator" class="progress-fill"></div>
-                </div>
-                <span id="progress-text">0%</span>
-            </div>
-        </div>
-
-        <h2>🔌 الأنظمة الكهربائية</h2>
-        <div class="item">
-            <input type="checkbox" id="item1" class="checklist-item">
-            <label for="item1"><strong>لوحات الكهرباء الرئيسية والفرعية</strong></label>
-        </div>
-        <div class="item">
-            <input type="checkbox" id="item2" class="checklist-item">
-            <label for="item2"><strong>مفتاح التحويل الأوتوماتيكي (ATS)</strong></label>
-        </div>
-        <div class="item">
-            <input type="checkbox" id="item3" class="checklist-item">
-            <label for="item3"><strong>توثيق تفاصيل المولد الكهربائي</strong></label>
-            <span class="details">الماركة: كمنز أمريكي، القدرة: 130 كيلو فولت أمبير، سعة الخزان: 300 لتر</span>
-        </div>
-        
-        <h2>⚙️ الأنظمة الميكانيكية</h2>
-        <div class="item">
-            <input type="checkbox" id="item4" class="checklist-item">
-            <label for="item4"><strong>حصر المصعد وتفاصيله</strong></label>
-            <span class="details">الماركة: شاندلر، الحمولة: 650 كيلو، يغطي جميع الأدوار</span>
-        </div>
-        <div class="item">
-            <input type="checkbox" id="item5" class="checklist-item">
-            <label for="item5"><strong>حصر مضخات المياه (بشكل منفصل)</strong></label>
-            <span class="details">عدد 2 لملء الخزانات، وعدد 2 لضخ المياه للأقسام</span>
-        </div>
-
-        <h2>💧 أنظمة المياه والصرف الصحي</h2>
-        <div class="item">
-            <input type="checkbox" id="item6" class="checklist-item">
-            <label for="item6"><strong>حصر خزانات المياه كأصل مستقل</strong></label>
-            <span class="details">عدد 4 خزانات، سعة الخزان الواحد 2000 لتر</span>
-        </div>
-
-        <h2>🚨 أنظمة السلامة والإنذار</h2>
-        <div class="item">
-            <input type="checkbox" id="item7" class="checklist-item">
-            <label for="item7"><strong>إضافة مكونات نظام إنذار الحريق</strong></label>
-            <span class="details">
-                - كواسر الحريق (نقاط النداء اليدوية) <br>
-                - لوحة التحكم الرئيسية لإنذار الحريق
-            </span>
-        </div>
-        <div class="item">
-            <input type="checkbox" id="item8" class="checklist-item">
-            <label for="item8"><strong>حصر نظام استدعاء التمريض</strong></label>
-        </div>
-
-        <h2>💻 أنظمة الاتصالات وتكنولوجيا المعلومات</h2>
-        <div class="item">
-            <input type="checkbox" id="item9" class="checklist-item">
-            <label for="item9"><strong>تفصيل مكونات نظام كاميرات المراقبة</strong></label>
-            <span class="details">جهاز التسجيل (NVR)، شاشات المراقبة</span>
-        </div>
-        <div class="item">
-            <input type="checkbox" id="item10" class="checklist-item">
-            <label for="item10"><strong>تفصيل مكونات نظام الإذاعة الداخلية</strong></label>
-            <span class="details">مكبرات الصوت، المايكروفون، وحدة التشغيل</span>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const checkboxes = document.querySelectorAll('.checklist-item');
-            const progressIndicator = document.getElementById('progress-indicator');
-            const progressText = document.getElementById('progress-text');
-            const totalTasks = checkboxes.length;
-            const storageKey = 'checklistState_v1';
-
-            function updateProgress() {
-                const checkedTasks = document.querySelectorAll('.checklist-item:checked').length;
-                const percentage = totalTasks > 0 ? Math.round((checkedTasks / totalTasks) * 100) : 0;
-                
-                progressIndicator.style.width = percentage + '%';
-                progressIndicator.textContent = percentage + '%'; // Show percentage on the bar itself
-                progressText.textContent = percentage + '%';
-            }
-
-            function saveState() {
-                const state = [];
-                checkboxes.forEach(cb => {
-                    state.push({ id: cb.id, checked: cb.checked });
-                });
-                localStorage.setItem(storageKey, JSON.stringify(state));
-            }
-
-            function loadState() {
-                const savedState = localStorage.getItem(storageKey);
-                if (savedState) {
-                    try {
-                        const state = JSON.parse(savedState);
-                        state.forEach(item => {
-                            const cb = document.getElementById(item.id);
-                            if (cb) {
-                                cb.checked = item.checked;
-                            }
-                        });
-                    } catch (e) {
-                        console.error("Error parsing saved state:", e);
-                        localStorage.removeItem(storageKey);
-                    }
-                }
-            }
-
-            // Initial Load
-            loadState();
-            updateProgress();
-
-            // Add Event Listeners
-            checkboxes.forEach(cb => {
-                cb.addEventListener('change', () => {
-                    updateProgress();
-                    saveState();
-                });
-            });
-        });
-    </script>
-
-</body>
-</html>
